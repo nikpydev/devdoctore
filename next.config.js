@@ -1,4 +1,4 @@
-const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
 
 // module.exports = {
 //   env: {
@@ -10,13 +10,13 @@ module.exports = (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
       env: {
-        mongodb_database: "devdoctore-dev",
-      },
+        mongodb_database: 'devdoctore-dev'
+      }
     };
   }
   return {
     env: {
-      mongodb_database: "devdoctore-prod",
-    },
+      mongodb_database: 'devdoctore-prod'
+    }
   };
 };

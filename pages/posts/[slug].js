@@ -1,14 +1,14 @@
-import Head from "next/head";
-import { Fragment } from "react";
-import PostContent from "../../components/posts/post-detail/post-content";
-import { getPostData, getPostsFiles } from "../../lib/posts-util";
+import Head from 'next/head';
+import { Fragment } from 'react';
+import PostContent from '../../components/posts/post-detail/post-content';
+import { getPostData, getPostsFiles } from '../../lib/posts-util';
 
 const PostDetailPage = ({ post }) => {
   return (
     <Fragment>
       <Head>
         <title>{post.title}</title>
-        <meta name={"description"} content={post.excerpt} />
+        <meta name={'description'} content={post.excerpt} />
       </Head>
       <PostContent post={post} />
     </Fragment>
@@ -23,9 +23,9 @@ export const getStaticProps = async (context) => {
 
   return {
     props: {
-      post,
+      post
     },
-    revalidate: 600,
+    revalidate: 600
   };
 };
 
@@ -33,12 +33,12 @@ export const getStaticPaths = async () => {
   const allPostFileNames = getPostsFiles();
   const pathsArr = allPostFileNames.map((postFileName) => ({
     params: {
-      slug: postFileName.replace(/\.md$/, ""),
-    },
+      slug: postFileName.replace(/\.md$/, '')
+    }
   }));
 
   return {
     paths: pathsArr,
-    fallback: "blocking",
+    fallback: 'blocking'
   };
 };

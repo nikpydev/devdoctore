@@ -1,8 +1,8 @@
-import { Fragment } from "react";
-import FeaturedPosts from "../components/home-page/featured-posts";
-import Hero from "../components/home-page/hero";
-import Head from "next/head";
-import { getFeaturedPosts } from "../lib/posts-util";
+import { Fragment } from 'react';
+import FeaturedPosts from '../components/home-page/featured-posts';
+import Hero from '../components/home-page/hero';
+import Head from 'next/head';
+import { getFeaturedPosts } from '../lib/posts-util';
 
 const HomePage = ({ posts }) => {
   return (
@@ -10,8 +10,8 @@ const HomePage = ({ posts }) => {
       <Head>
         <title>Nikhil's Blog</title>
         <meta
-          name={"description"}
-          content={"I post about programming and web development"}
+          name={'description'}
+          content={'I post about programming and web development'}
         />
       </Head>
       <Hero />
@@ -27,8 +27,8 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      posts: featuredPosts,
+      posts: featuredPosts
     },
-    revalidate: 60,
+    revalidate: 60
   };
 };

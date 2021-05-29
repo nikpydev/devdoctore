@@ -1,34 +1,34 @@
-import { useEffect, useState } from "react";
-import Notification from "../ui/notification";
-import classes from "./contact-form.module.css";
+import { useEffect, useState } from 'react';
+import Notification from '../ui/notification';
+import classes from './contact-form.module.css';
 
 const sendContactData = async (contactDetails) => {
-  const response = await fetch("/api/contact", {
-    method: "POST",
+  const response = await fetch('/api/contact', {
+    method: 'POST',
     body: JSON.stringify(contactDetails),
     headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    }
   });
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || "Something went wrong!");
+    throw new Error(data.message || 'Something went wrong!');
   }
 };
 
 const ContactForm = () => {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
-  const [requestStatus, setRequestStatus] = useState(""); // "pending", "success", "error"
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
+  const [requestStatus, setRequestStatus] = useState(''); // "pending", "success", "error"
   const [error, setError] = useState({});
 
   useEffect(() => {
-    if (requestStatus === "success" || requestStatus === "error") {
+    if (requestStatus === 'success' || requestStatus === 'error') {
       const timer = setTimeout(() => {
-        setRequestStatus("");
+        setRequestStatus('');
         setError({});
       }, 3000);
       return () => clearTimeout(timer);
@@ -50,50 +50,50 @@ const ContactForm = () => {
   const sendMessageHandler = async (event) => {
     event.preventDefault();
 
-    setRequestStatus("pending");
+    setRequestStatus('pending');
 
     try {
       await sendContactData({
         email,
         name,
-        message,
+        message
       });
 
-      setEmail("");
-      setName("");
-      setMessage("");
+      setEmail('');
+      setName('');
+      setMessage('');
 
-      setRequestStatus("success");
+      setRequestStatus('success');
     } catch (error) {
-      console.error("Error submitting message: ", error);
-      setRequestStatus("error");
+      console.error('Error submitting message: ', error);
+      setRequestStatus('error');
       setError(error);
     }
   };
 
   let notification;
 
-  if (requestStatus === "pending") {
+  if (requestStatus === 'pending') {
     notification = {
-      status: "pending",
-      title: "Sending message...",
-      message: "Your message is on its way!",
+      status: 'pending',
+      title: 'Sending message...',
+      message: 'Your message is on its way!'
     };
   }
 
-  if (requestStatus === "success") {
+  if (requestStatus === 'success') {
     notification = {
-      status: "success",
-      title: "Success!",
-      message: "Message sent successfully!!!!!",
+      status: 'success',
+      title: 'Success!',
+      message: 'Message sent successfully!!!!!'
     };
   }
 
-  if (requestStatus === "error") {
+  if (requestStatus === 'error') {
     notification = {
-      status: "error",
-      title: "Error!",
-      message: error.message,
+      status: 'error',
+      title: 'Error!',
+      message: error.message
     };
   }
 
@@ -103,20 +103,20 @@ const ContactForm = () => {
       <form className={classes.form} onSubmit={sendMessageHandler}>
         <div className={classes.controls}>
           <div className={classes.control}>
-            <label htmlFor={"email"}>Your Email</label>
+            <label htmlFor={'email'}>Your Email</label>
             <input
-              type={"email"}
-              id={"email"}
+              type={'email'}
+              id={'email'}
               required
               onChange={handleEmailChange}
               value={email}
             />
           </div>
           <div className={classes.control}>
-            <label htmlFor={"name"}>Your Name</label>
+            <label htmlFor={'name'}>Your Name</label>
             <input
-              type={"text"}
-              id={"name"}
+              type={'text'}
+              id={'name'}
               required
               onChange={handleNameChange}
               value={name}
@@ -124,9 +124,9 @@ const ContactForm = () => {
           </div>
         </div>
         <div className={classes.control}>
-          <label htmlFor={"message"}>Your Message</label>
+          <label htmlFor={'message'}>Your Message</label>
           <textarea
-            id={"message"}
+            id={'message'}
             rows={5}
             required
             onChange={handleMessageChange}

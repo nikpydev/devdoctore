@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "prettier:format": "prettier --write ."
   },
   "dependencies": {
     "gray-matter": "^4.0.2",

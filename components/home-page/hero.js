@@ -1,13 +1,13 @@
-import Image from "next/image";
-import classes from "./hero.module.css";
+import Image from 'next/image';
+import classes from './hero.module.css';
 
 const Hero = () => {
   return (
     <section className={classes.hero}>
       <div className={classes.image}>
         <Image
-          src={"/images/site/nikhil.jpg"}
-          alt={"An image showing Nikhil"}
+          src={'/images/site/nikhil.jpg'}
+          alt={'An image showing Nikhil'}
           height={300}
           width={300}
         />

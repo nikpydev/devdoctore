@@ -1,5 +1,5 @@
-import Image from "next/image";
-import classes from "./post-header.module.css";
+import Image from 'next/image';
+import classes from './post-header.module.css';
 
 const PostHeader = ({ title, image }) => {
   return (
