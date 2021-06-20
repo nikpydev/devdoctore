@@ -1,0 +1,5 @@
+*.min.js
+*.min.jsx
+*.min.ts
+*.min.tsx
+.next
